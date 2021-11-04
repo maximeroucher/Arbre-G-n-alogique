@@ -1,0 +1,37 @@
+{% extends "Layout.html" %}
+
+{% block content %}
+    <div class="all-tree">
+        {% for gen in persons %}
+        <div class="gen">
+            {% for p in gen %}
+            <div class="table">
+                {% if p != main %}
+                    <a href="/Tree/{{p.Id}}" class="plus">
+                        +
+                    </a>
+                {% else %}
+                    <a href="/Tree/{{p.Id}}" class="plus">
+                        -
+                    </a>
+                {% endif %}
+                <a href="/expand/{{p.Id}}">
+                    <div class="tree">
+                        <h2>
+                            {{p.prenom}} {{p.nom}}
+                        </h2>
+                        <span>
+                            {{p.dateNaissance[0][0]}}{{p.dateNaissance[0][1]}}{{p.dateNaissance[0][2]}}{{p.dateNaissance[0][3]}}
+                            {% if (p.dateDeces.lenght == 3) %}
+                                -
+                                {{p.dateDeces[0][0]}}{{p.dateDeces[0][1]}}{{p.dateDeces[0][2]}}{{p.dateDeces[0][3]}}
+                            {% endif %}
+                        </span>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

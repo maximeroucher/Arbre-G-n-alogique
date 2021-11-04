@@ -1,0 +1,85 @@
+{% extends "Layout.html" %}
+
+{% block content %}
+<div class="box" style="height:550px">
+    <div class="entry">
+        <form action="/addPart/{{p.Id}}">
+            <h2>
+                Ajouter un ou une partenaire à {{p.prenom}}
+            </h2>
+            <div class="back">
+                <a href="/expand/{{p.Id}}">
+                    Retour à la personne
+                </a>
+            </div>
+            <div class="info" style="height:80%;">
+                <span class="infop">
+                    La personne est déjà enregistrée
+                </span>
+                <span class="lbl">
+                    Choisissez une personne
+                </span>
+                <select name="ID">
+                    {% for p in persons %}
+                        <option value="{{p.Id}}">{{p.prenom}} {{p.nom}}</option>
+                    {% endfor %}
+                </select>
+                <div>
+                    <input type="submit" value="Valider" class="bot">
+                </div>
+            </div>
+            <div>
+                <span class="separator" style="background-color:rgba(75, 75, 75, 0.849)">
+                </span>
+            </div>
+            <div class="questions">
+                <div>
+                    <p>
+                        La personne n'est pas encore enregistrée
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        Nom de famille
+                    </p>
+                </div>
+                <div>
+                    <input type="text" name="nom">
+                </div>
+                <div>
+                    <p>
+                        Prénom
+                    </p>
+                </div>
+                <div>
+                    <input type="text" name="prenom">
+                </div>
+                <div>
+                    <p>
+                        Date de naissance
+                    </p>
+                </div>
+                <div>
+                    <input type="date" name="naissance">
+                </div>
+                <div>
+                    <label>
+                        <input type="radio" class="option-input radio" value="homme" name="sexe"/>
+                        Homme
+                    </label>
+                    <label>
+                        <input type="radio" class="option-input radio" value="femme" name="sexe"/>
+                        Femme
+                    </label>
+                </div>
+            <div>
+                <input type="submit" value="Ajouter">
+            </div>
+            </div>
+            <div class="mid">
+                <input type="reset" value="Recommencer">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

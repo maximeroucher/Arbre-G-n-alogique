@@ -1,0 +1,38 @@
+{% extends "Layout.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="loginbox" style="height:600px">
+            <img src="/ressources/avatar-default-icon.png" class="avatar">
+            <h1>
+                Inscrivez vous
+            </h1>
+            <form action="/signIn" method="GET">
+                <p>
+                    Address Mail
+                </p>
+                <input type="email" name="mail" placeholder="Address mail">
+                <p>
+                    Nom utilisateur
+                </p>
+                <input type="text" name="name" placeholder="Nom d'utilisateur">
+                <p>
+                    Mot de passe
+                </p>
+                <input type="password" name="password" placeholder="Mot de passe">
+                <p>
+                    Confirmer le mot de passe
+                </p>
+                <input type="password" name="confirm" placeholder="Mot de passe">
+                <input class="sub" type="submit" value="S'inscrire">
+            </form>
+            <div>
+                <a href="/annuler">
+                    <button class="annuler">
+                        Annuler
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "Layout.html" %}
+
+{% block content %}
+<div class="box" style="height:550px">
+    <div class="entry">
+        <form action="/addMet/{{p.Id}}">
+            <h2>
+                Ajouter un métier à {{p.prenom}}
+            </h2>
+            <div class="back">
+                <a href="/expand/{{p.Id}}">
+                    Retour à la personne
+                </a>
+            </div>
+            <p>
+                Métier
+            </p>
+            <input type="text" name="metier">
+            <div>
+                <input type="submit" value="Ajouter">
+            </div>
+            <input type="reset" value="Recommencer">
+        </form>
+    </div>
+</div>
+{% endblock %}

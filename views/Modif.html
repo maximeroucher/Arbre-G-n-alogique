@@ -1,0 +1,112 @@
+{% extends "Layout.html" %}
+
+{% block content %}
+    <div class="box" style="height:550px">
+        <div class="entry">
+            <form action="/ModifPers/{{p.Id}}">
+                <h2>
+                    Modifier les informations concernant {{p.prenom}}
+                </h2>
+                <div class="back">
+                    <a href="/expand/{{p.Id}}">
+                        Retour à la personne
+                    </a>
+                </div>
+                <div class="info">
+                    <br>
+                    <div class="up">
+                        Informations générales
+                    </div>
+                    <p>
+                        Nom de famille
+                    </p>
+                    <input type="text" name="nom" value="{{p.nom}}">
+                    <p>
+                        Prénom
+                    </p>
+                    <input type="text" name="prenom" value="{{p.prenom}}">
+                    <p>
+                        Date de naissance
+                    </p>
+                    <input type="date" name="naissance" class="text-box" value="{{p.dateNaissance[0][0]}}{{p.dateNaissance[0][1]}}{{p.dateNaissance[0][2]}}{{p.dateNaissance[0][3]}}-{{p.dateNaissance[1][0]}}{{p.dateNaissance[1][1]}}-{{p.dateNaissance[2][0]}}{{p.dateNaissance[2][1]}}">
+                    <br>
+                    <br>
+                    <label>
+                        {% if p.sexe == "m" %}
+                            <input type="radio" class="option-input radio" value="homme" checked="checked" name="sexe"/>
+                        {% else %}
+                            <input type="radio" class="option-input radio" value="homme" name="sexe"/>
+                        {% endif %}
+                        Homme
+                    </label>
+                    <label>
+                        {% if p.sexe == "f" %}
+                            <input type="radio" class="option-input radio" value="femme" checked="checked" name="sexe"/>
+                        {% else %}
+                            <input type="radio" class="option-input radio" value="femme" name="sexe"/>
+                        {% endif %}
+                        Femme
+                    </label>
+                </div>
+                <div>
+                    <span class="separator" style="background-color:rgba(75, 75, 75, 0.849)">
+                    </span>
+                </div>
+                <div class="questions">
+                    <div class="up">
+                        Informations complémentaires
+                    </div>
+                    <div>
+                    {% if p.metier[0] != null %}
+                        <div>
+                            <p>
+                                Métier
+                            </p>
+                        </div>
+                        <input type="text" name="metier" value="{{p.metier[0]}}">
+                    {% endif %}
+                    </div>
+                    <div>
+                    {% if partenaire != null %}
+                        <div>
+                            <p>
+                                Partenaire
+                            </p>
+                        </div>
+                        <select name="ID">
+                            <option value="{{partenaire.Id}}">{{partenaire.prenom}} {{partenaire.nom}}</option>
+                            {% for p in persons %}
+                                <option value="{{p.Id}}">{{p.prenom}} {{p.nom}}</option>
+                            {% endfor %}
+                        </select>
+                    {% endif %}
+                    </div>
+                    <div>
+                    {% if p.dateMariage[0] != null %}
+                        <div>
+                            <p>
+                                Date de mariage
+                            </p>
+                        </div>
+                        <input type="date" name="mariage" class="text-box" value="{{p.dateMariage}}">
+                    {% endif %}
+                    </div>
+                    <div>
+                    {% if p.dateDeces[0] != null %}
+                        <div>
+                            <p>
+                                Date de décès
+                            </p>
+                        </div>
+                        <input type="text" name="deces" value="{{p.dateDeces[0]}}">
+                    {% endif %}
+                    </div>
+                </div>
+                <div class="mid2">
+                    <input type="submit" value="Ajouter">
+                    <input type="reset" value="Recommencer">
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

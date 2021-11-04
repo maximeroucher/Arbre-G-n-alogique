@@ -1,0 +1,173 @@
+{% extends "Layout.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="tree-bigger">
+            <h2>
+                {{p.prenom}} {{p.nom}}
+            </h2>
+            <h4>
+                {{p.dateNaissance[2][0]}}{{p.dateNaissance[2][1]}}/{{p.dateNaissance[1][0]}}{{p.dateNaissance[1][1]}}/{{p.dateNaissance[0][0]}}{{p.dateNaissance[0][1]}}{{p.dateNaissance[0][2]}}{{p.dateNaissance[0][3]}}
+                {% if (p.dateDeces.lenght == 3) %}
+                -
+                {{p.dateDeces[2][0]}}{{p.dateDeces[2][1]}}/{{p.dateDeces[1][0]}}{{p.dateDeces[1][1]}}/{{p.dateDeces[0][0]}}{{p.dateDeces[0][1]}}{{p.dateDeces[0][2]}}{{p.dateDeces[0][3]}}
+                {% endif %}
+            </h4>
+            {% if (p.metier[0] != null) %}
+                <h4 style="font-style:italic">
+                    {{p.metier[0]}}
+                </h4>
+            {% endif %}
+            <div class="top">
+                <a href="/Modif/{{p.Id}}">
+                    Modifier la personne
+                </a>
+            </div>
+            <div class="back">
+                <a href="/Tree">
+                    Retour à l'arbre complet
+                </a>
+            </div>
+                        <div>
+                <span class="separator">
+                </span>
+            </div>
+            <div class="questions">
+                <div class="up">
+                    Famille :
+                </div>
+                    <div>
+                        <a href="/AddParents/{{p.Id}}">
+                            <div class="under">
+                                Ajouter un parent
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="/AddFreresoeur/{{p.Id}}">
+                            <div class="under">
+                                Ajouter un frère ou une sœur
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="/AddEnfants/{{p.Id}}">
+                            <div class="under">
+                                Ajouter un enfant
+                            </div>
+                        </a>
+                    </div>
+                    <div class="up">
+                        Informations personnelles :
+                    </div>
+                    <div>
+                        <a href="/AddPartenaire/{{p.Id}}">
+                            <div class="under">
+                                Ajouter un/une partenaire
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="/AddMariage/{{p.Id}}">
+                            <div class="under">
+                                Ajouter la date de mariage
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="/AddDeces/{{p.Id}}">
+                            <div class="under">
+                                Ajouter la date de dèces
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="/AddMetier/{{p.Id}}">
+                            <div class="under">
+                                Ajouter le métier
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="middle">
+                    <a href="/Suppr/{{p.Id}}">
+                        Supprimer la personne
+                    </a>
+                </div>
+                {% if (parents[0] != null) or (FrereSoeurs[0] != null) or (enfants[0] != null) or (partenaire[0] != null) %}
+                <div class="info">
+                    {% if parents[0] != null %}
+                        <div class="up">
+                            Parents :
+                        </div>
+                        {% for parent in parents %}
+                            {% if (parent.sexe == "m") %}
+                                <a href="/expand/{{parent.Id}}">
+                                    <h5>
+                                        Père : {{parent.prenom}}
+                                    </h5>
+                                </a>
+                                {% else %}
+                                <a href="/expand/{{parent.Id}}">
+                                    <h5>
+                                        Mère : {{parent.prenom}}
+                                    </h5>
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if FrereSoeurs[0] != null %}
+                        <div class="up">
+                            Frères et Sœurs :
+                        </div>
+                        {% for fs in FrereSoeurs %}
+                            {% if (fs.sexe == "m") %}
+                                <a href="/expand/{{fs.Id}}">
+                                    <h5>
+                                        Frère : {{fs.prenom}}
+                                    </h5>
+                                </a>
+                                {% else %}
+                                <a href="/expand/{{fs.Id}}">
+                                    <h5>
+                                        Sœur : {{fs.prenom}}
+                                    </h5>
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if enfants[0] != null %}
+                        <div class="up">
+                            Enfants :
+                        </div>
+                        {% for enf in enfants %}
+                            {% if (enf.sexe == "m") %}
+                                <a href="/expand/{{enf.Id}}">
+                                    <h5>
+                                        Fils : {{enf.prenom}}
+                                    </h5>
+                                </a>
+                            {% else %}
+                                <a href="/expand/{{enf.Id}}">
+                                    <h5>
+                                        Fille : {{enf.prenom}}
+                                    </h5>
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if partenaire[0] != null %}
+                        <div class="up">
+                                Partenaire :
+                        </div>
+                        <a href="/expand/{{partenaire[0].Id}}">
+                            <h3>
+                                {{partenaire[0].prenom}}
+                            </h3>
+                        </a>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

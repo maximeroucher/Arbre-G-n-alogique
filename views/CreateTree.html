@@ -1,0 +1,38 @@
+{% extends "Layout.html" %}
+
+{% block content %}
+    <div class="box">
+        <form action="/CreateTree">
+            <h2>
+                Entrez un membre de votre famille
+            </h2>
+            <p>
+                Nom de famille
+            </p>
+            <input type="text" name="nom">
+            <p>
+                Prénom
+            </p>
+            <input type="text" name="prenom">
+            <p>
+                Date de naissance
+            </p>
+            <input type="date" name="naissance">
+            <p>
+                Sexe
+            </p>
+            <label>
+                <input type="radio" class="option-input radio" value="homme" name="sexe"/>
+                Homme
+            </label>
+            <label>
+                <input type="radio" class="option-input radio" value="femme" name="sexe"/>
+                Femme
+            </label>
+            <div>
+                <input type="submit" value="Créer">
+            </div>
+            <input type="reset" value="Recommencer">
+        </form>
+    </div>
+{% endblock %}

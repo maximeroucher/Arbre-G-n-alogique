@@ -1,0 +1,26 @@
+{% extends "Layout.html" %}
+
+{% block content %}
+<div class="box" style="height:550px">
+    <div class="entry">
+        <form action="/addDec/{{p.Id}}">
+            <h2>
+                Ajouter la date de déces de {{p.prenom}}
+            </h2>
+            <div class="back">
+                <a href="/expand/{{p.Id}}">
+                    Retour à la personne
+                </a>
+            </div>
+            <p>
+                Date de déces
+            </p>
+            <input type="date" name="deces">
+            <div>
+                <input type="submit" value="Ajouter">
+            </div>
+            <input type="reset" value="Recommencer">
+        </form>
+    </div>
+</div>
+{% endblock %}

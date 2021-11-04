@@ -1,0 +1,8 @@
+Ajout de lastId sur userMail :
+    - Mettre mamie Yvette a la bonne place
+
+Erreur :
+    - Intégrer les messages d'erreur dans la page et non sur une nouvelle
+
+Exportation :
+    - Tranforme la base de donnée en pdf (WTF IS THAT POSSIBLE ???)

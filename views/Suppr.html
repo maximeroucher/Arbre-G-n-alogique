@@ -1,0 +1,22 @@
+{% extends "Layout.html" %}
+
+{% block content %}
+    <div class="alert">
+        <p>
+            Êtes-vous sûr de supprimer {{p.prenom}} {{p.nom}} ?
+        </p>
+        <h3>
+            (Cette opération est irréversible)
+        </h3>
+        <div>
+            <a href="/SupprimerPers/{{p.Id}}">
+                <input type="button" value="Oui" class="sup1">
+            </a>
+        </div>
+        <div>
+            <a href="/expand/{{p.Id}}">
+                <input type="button" value="Non" class="sup2">
+            </a>
+        </div>
+    </div>
+{% endblock %}

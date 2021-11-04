@@ -1,0 +1,48 @@
+{% extends "Layout.html" %}
+
+{% block content %}
+<div class="box" style="height:550px">
+    <div class="entry">
+        <form action="/addFS/{{p.Id}}">
+            <h2>
+                Ajouter un frère ou une sœur à {{p.prenom}}
+            </h2>
+            <div class="back">
+                <a href="/expand/{{p.Id}}">
+                    Retour à la personne
+                </a>
+            </div>
+            <p>
+                Nom de famille
+            </p>
+            <input type="text" name="nom" value="{{p.nom}}">
+            <p>
+                Prénom
+            </p>
+            <input type="text" name="prenom">
+            <p>
+                Date de naissance
+            </p>
+            <input type="date" name="naissance">
+            <br>
+            <br>
+            <div>
+                <label>
+                    <input type="radio" class="option-input radio" value="homme" name="sexe"/>
+                    Frère
+                </label>
+                <label>
+                    <input type="radio" class="option-input radio" value="femme" name="sexe" />
+                    Sœur
+                </label>
+            </div>
+            <br>
+            <br>
+            <div>
+                <input type="submit" value="Ajouter">
+            </div>
+            <input type="reset" value="Recommencer">
+        </form>
+    </div>
+</div>
+{% endblock %}

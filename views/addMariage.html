@@ -1,0 +1,26 @@
+{% extends "Layout.html" %}
+
+{% block content %}
+<div class="box" style="height:550px">
+    <div class="entry">
+        <form action="/addMar/{{p.Id}}">
+            <h2>
+                Ajouter la date de mariage de {{p.prenom}} et de {{partenaire.prenom}}
+            </h2>
+            <div class="back">
+                <a href="/expand/{{p.Id}}">
+                    Retour à la personne
+                </a>
+            </div>
+            <p>
+                Date de mariage
+            </p>
+            <input type="date" name="mariage">
+            <div>
+                <input type="submit" value="Ajouter">
+            </div>
+            <input type="reset" value="Recommencer">
+        </form>
+    </div>
+</div>
+{% endblock %}

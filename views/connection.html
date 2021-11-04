@@ -1,0 +1,35 @@
+{% extends "Layout.html" %}
+
+{% block content %}
+    <div class="loginbox">
+        <img src="/ressources/avatar-default-icon.png" class="avatar">
+        <h1>
+            Connectez vous
+        </h1>
+        <form action="/submit">
+            <p>
+                Nom utilisateur
+            </p>
+            <input type="text" name="name" placeholder="Nom d'utilisateur" autofocus>
+            <p>
+                Mot de passe
+            </p>
+            <input type="password" name="password" placeholder="Mot de passe">
+            <input class="sub" type="submit" value="Se connecter">
+            <a href="/noAccount">
+                Vous n'avez pas encore de compte ?
+            </a>
+            <br>
+            <a href="/forgot">
+                Vous avez oublier votre mot de passe ?
+            </a>
+        </form>
+        <div>
+            <a href="/annuler">
+                <button class="annuler">
+                    Annuler
+                </button>
+            </a>
+        </div>
+    </div>
+{% endblock %}

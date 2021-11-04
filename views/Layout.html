@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            Arbre Généalogique
+        </title>
+        <link rel="shortcut icon" href="/ressources/Icon.ico">
+        <link rel="stylesheet" type="text/css" href="/CSS/style.css">
+        <script src="/ressources/addOn.js">
+        </script>
+    </head>
+    <body>
+        <ul class="menu">
+            <li>
+                <a href="/accueil">
+                    Accueil
+                </a>
+            </li>
+            {% if to_display != "" %}
+                <li>
+                    <a href="/arbreGen">
+                        Votre Arbre Généalogique
+                    </a>
+                </li>
+                <a href="/Deconnect">
+                    <li>
+                        <input class="butn" type="submit" value="Se déconnecter">
+                    </li>
+                </a>
+                <li>
+                    <span class="nom">{{to_display}}</span>
+                </li>
+            {% else %}
+                <a href="/accueil/connection">
+                    <li>
+                        <input class="butn" type="submit" value="Se connecter">
+                        <img src="/ressources/avatar-default-icon.png">
+                    </li>
+                </a>
+            {% endif %}
+        </ul>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
